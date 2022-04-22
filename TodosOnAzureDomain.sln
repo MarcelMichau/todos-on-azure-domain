@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todos.Domain", "Todos.Domain\Todos.Domain.csproj", "{898174CD-074A-4ABC-B6D4-0D2688EEC112}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todos.Domain", "src\Todos.Domain\Todos.Domain.csproj", "{898174CD-074A-4ABC-B6D4-0D2688EEC112}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todos.Domain.Tests", "Todos.Domain.Tests\Todos.Domain.Tests.csproj", "{5931C6C3-496C-403F-872F-337750363978}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todos.Domain.Tests", "src\Todos.Domain.Tests\Todos.Domain.Tests.csproj", "{5931C6C3-496C-403F-872F-337750363978}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

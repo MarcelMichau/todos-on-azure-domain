@@ -15,7 +15,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="..\images\MM Logo.png">
+        <None Include="..\..\images\MM Logo.png">
             <Pack>True</Pack>
             <PackagePath></PackagePath>
         </None>

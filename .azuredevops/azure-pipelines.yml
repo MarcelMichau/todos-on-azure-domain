@@ -11,9 +11,8 @@ variables:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   # Disable sending .NET CLI telemetry to Microsoft.
   DOTNET_CLI_TELEMETRY_OPTOUT: true
-  # Set the build number in MinVer.
-  MINVERBUILDMETADATA: build.$(Build.BuildId)
   buildConfiguration: 'Release'
+  azureArtifactsFeed: 'Personal/personal-feed'
 
 steps:
   - task: UseDotNet@2
@@ -29,8 +28,9 @@ steps:
     displayName: 'NuGet Authenticate'
 
   - task: NuGetCommand@2
+    displayName: 'NuGet Push - $(azureArtifactsFeed)'
     inputs:
       command: 'push'
       packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-      publishVstsFeed: 'Personal/personal-feed'
+      publishVstsFeed: '$(azureArtifactsFeed)'
       allowPackageConflicts: true

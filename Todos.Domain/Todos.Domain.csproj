@@ -4,6 +4,20 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <Authors>Marcel Michau</Authors>
+        <Description>The Todos Domain used by the Todos On Azure Projects</Description>
+        <PackageProjectUrl>https://github.com/MarcelMichau/todos-on-azure-domain</PackageProjectUrl>
+        <PackageIcon>MM Logo.png</PackageIcon>
+        <RepositoryUrl>https://github.com/MarcelMichau/todos-on-azure-domain</RepositoryUrl>
+        <Copyright>Marcel Michau © 2022</Copyright>
     </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\images\MM Logo.png">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+    </ItemGroup>
 
 </Project>

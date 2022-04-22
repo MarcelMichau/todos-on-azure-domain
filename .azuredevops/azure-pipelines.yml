@@ -38,6 +38,12 @@ steps:
         TodosOnAzureDomain.sln
     displayName: 'Run Unit Tests'
 
+  - task: PublishCodeCoverageResults@1
+    inputs:
+      codeCoverageTool: 'cobertura'
+      summaryFileLocation: $(Agent.TempDirectory)/**/coverage.cobertura.xml
+    displayName: 'Publish Code Coverage Results'
+
   - task: NuGetAuthenticate@0
     displayName: 'NuGet Authenticate'
 

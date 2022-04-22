@@ -21,8 +21,22 @@ steps:
       packageType: 'sdk'
       useGlobalJson: true
 
-  - script: dotnet build --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)
-    displayName: 'dotnet build $(buildConfiguration)'
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'build'
+      arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+      projects: |
+        TodosOnAzureDomain.sln
+    displayName: 'Build Solution'
+
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'test'
+      publishTestResults: true
+      arguments: '--no-restore --collect "XPlat Code Coverage"'
+      projects: |
+        TodosOnAzureDomain.sln
+    displayName: 'Run Unit Tests'
 
   - task: NuGetAuthenticate@0
     displayName: 'NuGet Authenticate'

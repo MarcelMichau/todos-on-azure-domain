@@ -2,13 +2,16 @@
 
 public class Todo
 {
-    public int Id { get; set; }
-    public string? Text { get; private set; }
-    public bool IsDone { get; private set; }
+    public Guid Id { get; init; }
+    public DateTimeOffset CreatedOn { get; init; }
+    public string? Text { get; set; }
+    public bool IsDone { get; set; }
 
     public Todo(string taskText)
     {
         UpdateText(taskText);
+        Id = Guid.NewGuid();
+        CreatedOn = DateTimeOffset.Now;
         IsDone = false;
     }
 

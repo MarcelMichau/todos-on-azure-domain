@@ -1,3 +1,4 @@
+using System;
 using FluentAssertions;
 using Xunit;
 
@@ -8,7 +9,7 @@ public class TodoTests
     [Fact]
     public void GivenValidTask_WhenCreatingATodo_ThenNewTodoHasCorrectText()
     {
-        var todoText = "Create a test";
+        const string todoText = "Create a test";
         var newTodo = new Todo(todoText);
 
         newTodo.Text.Should().Be(todoText);
@@ -17,16 +18,35 @@ public class TodoTests
     [Fact]
     public void GivenValidTask_WhenCreatingATodo_ThenNewTodoIsInitiallyNotDone()
     {
-        var todoText = "Create a test";
+        const string todoText = "Create a test";
         var newTodo = new Todo(todoText);
 
         newTodo.IsDone.Should().BeFalse();
     }
-    
+
+    [Fact]
+    public void GivenValidTask_WhenCreatingATodo_ThenNewTodoIdIsGenerated()
+    {
+        const string todoText = "Create a test";
+        var newTodo = new Todo(todoText);
+
+        newTodo.Id.Should().NotBeEmpty();
+        newTodo.Id.Should().NotBe(Guid.Empty);
+    }
+
+    [Fact]
+    public void GivenValidTask_WhenCreatingATodo_ThenNewTodoHasCreatedOnDate()
+    {
+        const string todoText = "Create a test";
+        var newTodo = new Todo(todoText);
+
+        newTodo.CreatedOn.Should().BeCloseTo(DateTimeOffset.Now, TimeSpan.FromSeconds(1));
+    }
+
     [Fact]
     public void GivenTaskWithSpacesForPadding_WhenCreatingATodo_ThenNewTodoTextIsTrimmed()
     {
-        var todoText = "     Create a test     ";
+        const string todoText = "     Create a test     ";
         var newTodo = new Todo(todoText);
 
         newTodo.Text.Should().Be("Create a test");
@@ -37,7 +57,7 @@ public class TodoTests
     {
         var newTodo = new Todo("Create a test");
 
-        var updatedText = "Update this todo";
+        const string updatedText = "Update this todo";
         newTodo.UpdateText(updatedText);
 
         newTodo.Text.Should().Be(updatedText);
@@ -46,7 +66,7 @@ public class TodoTests
     [Fact]
     public void GivenNotDoneTodo_WhenMarkingAsDone_ThenTodoIsDone()
     {
-        var todoText = "Create a test";
+        const string todoText = "Create a test";
         var newTodo = new Todo(todoText);
         
         newTodo.MarkAsDone();
@@ -57,7 +77,7 @@ public class TodoTests
     [Fact]
     public void GivenDoneTodo_WhenMarkingAsNotDone_ThenTodoIsNotDone()
     {
-        var todoText = "Create a test";
+        const string todoText = "Create a test";
         var newTodo = new Todo(todoText);
         newTodo.MarkAsDone();
         
@@ -69,7 +89,7 @@ public class TodoTests
     [Fact]
     public void GivenNotDoneTodo_WhenTogglingDone_ThenTodoIsDone()
     {
-        var todoText = "Create a test";
+        const string todoText = "Create a test";
         var newTodo = new Todo(todoText);
         
         newTodo.ToggleDone();
@@ -80,7 +100,7 @@ public class TodoTests
     [Fact]
     public void GivenDoneTodo_WhenTogglingDone_ThenTodoIsNotDone()
     {
-        var todoText = "Create a test";
+        const string todoText = "Create a test";
         var newTodo = new Todo(todoText);
         newTodo.MarkAsDone();
         
